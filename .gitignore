@@ -1,0 +1,13 @@
+# git is case sensitive by default
+
+# Ignore everything
+*
+
+## But don't ignore Git files or top-level files like README.md
+!.gitignore
+!README.md
+#
+## Don't ignore the tcl folder
+!tcl/
+!tcl/*.tcl
+
