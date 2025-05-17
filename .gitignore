@@ -3,11 +3,15 @@
 # Ignore everything
 *
 
-## But don't ignore Git files or top-level files like README.md
+# Allow top-level files
 !.gitignore
 !README.md
-#
-## Don't ignore the tcl folder
+
+# Allow tcl folder and its subdirectories
 !tcl/
-!tcl/*.tcl
+!tcl/**/
+
+# Allow only .tcl files at any depth under tcl/
+!tcl/**/*.tcl
+
 
