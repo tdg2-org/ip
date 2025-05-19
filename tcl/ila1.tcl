@@ -1,9 +1,10 @@
-set ipDir "../ip"
+#set ipDir "../ip"
 set modName "ila1"
 
-if {![file exists $ipDir]} {error "ip directory not present"}
+#if {![file exists $ipDir]} {error "ip directory not present"}
 
-create_ip -name ila -vendor xilinx.com -library ip -version 6.2 -module_name $modName -dir $ipDir -force
+#create_ip -name ila -vendor xilinx.com -library ip -version 6.2 -module_name $modName -dir $ipDir -force
+create_ip -name ila -vendor xilinx.com -library ip -version 6.2 -module_name $modName -force -dir ./
 set_property -dict [list \
   CONFIG.C_DATA_DEPTH {16384} \
   CONFIG.C_NUM_OF_PROBES {2} \

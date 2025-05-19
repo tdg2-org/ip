@@ -1,9 +1,10 @@
-set ipDir "../ip"
+#set ipDir "../ip"
 set modName "axi_iic_0"
 
-if {![file exists $ipDir]} {error "ip directory not present"}
+#if {![file exists $ipDir]} {error "ip directory not present"}
 
-create_ip -name axi_iic -vendor xilinx.com -library ip -version 2.1 -module_name $modName -dir $ipDir -force
+#create_ip -name axi_iic -vendor xilinx.com -library ip -version 2.1 -module_name $modName -dir $ipDir -force
+create_ip -name axi_iic -vendor xilinx.com -library ip -version 2.1 -module_name $modName -force -dir ./
 set_property -dict [list \
   CONFIG.AXI_ACLK_FREQ_MHZ {100} \
   CONFIG.C_DEFAULT_VALUE {0x00} \

@@ -1,7 +1,7 @@
 # git is case sensitive by default
 
 # Ignore everything
-*
+/*
 
 # Allow top-level files
 !.gitignore
