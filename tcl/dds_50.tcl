@@ -22,6 +22,8 @@ set_property -dict [list \
   CONFIG.Phase_Width {28} \
   CONFIG.Phase_offset {None} \
   CONFIG.S_PHASE_Has_TUSER {Not_Required} \
+  CONFIG.Has_ARESETn {true} \
 ] [get_ips $modName]
 
 if {"-gen" in $argv} {generate_target all [get_files $modName.xci]}
+
