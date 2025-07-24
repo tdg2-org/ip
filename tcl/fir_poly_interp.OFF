@@ -1,0 +1,52 @@
+set ipDir "../ip"
+set modName "fir_mf"
+
+if {![file exists $ipDir]} {error "ip directory not present"}
+
+create_ip -name fir_compiler -vendor xilinx.com -library ip -version 7.2 -module_name $modName -dir $ipDir -force
+set_property -dict [list \
+  CONFIG.CoefficientVector {0,2571,5126,7649,10126,12539,14876,17121,19260,21280,23170,24916,26509,27938,29196,30273,31163,31862,32364,32666,32767,32666,32364,31862,31163,30273,29196,27938,26509,24916,23170,21280,19260,17121,14876,12539,10126,7649,5126,2571,0} \
+  CONFIG.Coefficient_Fractional_Bits {0} \
+  CONFIG.Coefficient_Sets {1} \
+  CONFIG.Coefficient_Sign {Signed} \
+  CONFIG.Coefficient_Structure {Inferred} \
+  CONFIG.Coefficient_Width {16} \
+  CONFIG.Data_Width {16} \
+  CONFIG.Output_Width {32} \
+  CONFIG.Quantization {Integer_Coefficients} \
+  CONFIG.Clock_Frequency {200} \
+  CONFIG.ColumnConfig {12} \
+  CONFIG.Filter_Architecture {Systolic_Multiply_Accumulate} \
+  CONFIG.Sample_Frequency {200} \
+  CONFIG.S_DATA_Has_FIFO {false} \
+] [get_ips $modName]
+
+if {"-gen" in $argv} {generate_target all [get_files $modName.xci]}
+
+
+#------------------------------------------------------------------
+
+create_ip -name fir_compiler -vendor xilinx.com -library ip -version 7.2 -module_name fir_poly_interp -dir /mnt/TDG_512/projects/2_zub_msk_udp_dma/sub/ip
+set_property -dict [list \
+  CONFIG.Clock_Frequency {200.0} \
+  CONFIG.CoefficientVector {2571, 7649, 12567, 17133, 21283, 24954, 28080, 30272, 31480, 31988, 31988, 31480, 30272, 28080, 24954, 21283, 17133, 12567, 7649, 2571} \
+  CONFIG.Coefficient_Fractional_Bits {0} \
+  CONFIG.Coefficient_Sets {5} \
+  CONFIG.Coefficient_Sign {Unsigned} \
+  CONFIG.Coefficient_Structure {Inferred} \
+  CONFIG.Coefficient_Width {16} \
+  CONFIG.Data_Width {16} \
+  CONFIG.Decimation_Rate {1} \
+  CONFIG.Filter_Architecture {Systolic_Multiply_Accumulate} \
+  CONFIG.Filter_Selection {1} \
+  CONFIG.Filter_Type {Interpolation} \
+  CONFIG.Interpolation_Rate {20} \
+  CONFIG.Number_Channels {1} \
+  CONFIG.Output_Rounding_Mode {Full_Precision} \
+  CONFIG.Output_Width {31} \
+  CONFIG.Quantization {Integer_Coefficients} \
+  CONFIG.RateSpecification {Frequency_Specification} \
+  CONFIG.Sample_Frequency {200} \
+  CONFIG.Zero_Pack_Factor {1} \
+] [get_ips fir_poly_interp]
+generate_target {instantiation_template} [get_files /mnt/TDG_512/projects/2_zub_msk_udp_dma/sub/ip/fir_poly_interp/fir_poly_interp.xci]
