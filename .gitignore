@@ -1,7 +1,8 @@
 # git is case sensitive by default
 
 # Ignore everything
-/*
+#/*
+**
 
 # Allow top-level files
 !.gitignore
@@ -9,9 +10,10 @@
 
 # Allow tcl folder and its subdirectories
 !tcl/
-!tcl/**/
 
-# Allow only .tcl files at any depth under tcl/
-!tcl/**/*.tcl
+# filetype allow, recursive
+!/tcl/**/*.tcl
+!/tcl/**/*.coe
+!/tcl/**/*.OFF
 
 
