@@ -9,7 +9,7 @@ set_property -dict [list \
   CONFIG.BestPrecision {true} \
   CONFIG.Clock_Frequency {100} \
   CONFIG.CoefficientSource {COE_File} \
-  CONFIG.Coefficient_File {/mnt/TDG_512/projects/py/taps_scaled_float2.coe} \
+  CONFIG.Coefficient_File {../../sw/py/fir/taps_scaled_float2.coe} \
   CONFIG.Coefficient_Fractional_Bits {16} \
   CONFIG.Coefficient_Sets {1} \
   CONFIG.Coefficient_Sign {Signed} \
